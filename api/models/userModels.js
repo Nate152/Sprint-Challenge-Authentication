@@ -32,7 +32,7 @@ UserSchema.pre('save', function(next) {
   // if there is an error here you'll need to handle it by calling next(err);
   // Once the password is encrypted, call next() so that your userController and create a user
 
-UserSchema.methods.checkPassword = function(plainTextPW, callBack) {
+UserSchema.methods.checkPassword = function(plainTextPW, cb) {
   bcrypt.compare(plainTextPW, this.encryptedPassword, (err, matchingPassword) => {
     if (err) return cb(err);
     cb(null, matchingPassword);
